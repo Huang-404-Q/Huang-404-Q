@@ -1,10 +1,12 @@
 # 生成统计卡片，提交到 main 分支的 profile-summary-card-output/ 目录
 #
-# token：优先用仓库 secret SUMMARY_GITHUB_TOKEN（需要一个带 read:user 权限的 PAT），
-# 没配时退回 GitHub 内置 token。内置 token 权限不够时任务会失败，配好 secret 再启用定时。
+# token：优先用仓库 secret SUMMARY_GITHUB_TOKEN（带 read:user 权限的 PAT），
+# 没配时退回 GitHub 内置 token，实测够用。
 name: generate summary cards
 
 on:
+  schedule:
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 permissions:
