@@ -21,11 +21,11 @@
 ## 🎯 About Me
 
 <table>
-  <tr><td>&nbsp; <img src="assets/logos/hrbeu.png" height="20" alt="哈尔滨工程大学"/>&nbsp; <a href="https://www.hrbeu.edu.cn"><b>哈尔滨工程大学</b></a> · 硕士 · 2025 – 2028</td></tr>
-  <tr><td>&nbsp; <img src="assets/logos/njupt.png" height="20" alt="南京邮电大学"/>&nbsp; <a href="https://www.njupt.edu.cn"><b>南京邮电大学</b></a> · 本科 · 2021 – 2025</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/hrbeu.png" height="20" align="absmiddle" alt="哈尔滨工程大学"/>&nbsp; <a href="https://www.hrbeu.edu.cn"><b>哈尔滨工程大学</b></a> · 硕士 · 2025 – 2028</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/njupt.png" height="20" align="absmiddle" alt="南京邮电大学"/>&nbsp; <a href="https://www.njupt.edu.cn"><b>南京邮电大学</b></a> · 本科 · 2021 – 2025</td></tr>
   <tr><td></td></tr>
-  <tr><td>&nbsp; <img src="assets/logos/hithink.png" height="20" alt="同花顺"/>&nbsp; <a href="https://www.10jqka.com.cn"><b>同花顺</b></a> · 大模型算法实习生 · 2026.09 – 至今</td></tr>
-  <tr><td>&nbsp; <img src="assets/logos/modelbest.png" height="20" alt="面壁智能"/>&nbsp; <a href="https://www.modelbest.cn"><b>面壁智能</b></a> · Agent 算法实习生 · 2026.04 – 2026.09</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/hithink.png" height="20" align="absmiddle" alt="同花顺"/>&nbsp; <a href="https://www.10jqka.com.cn"><b>同花顺</b></a> · 大模型算法实习生 · 2026.09 – 至今</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/modelbest.png" height="20" align="absmiddle" alt="面壁智能"/>&nbsp; <a href="https://www.modelbest.cn"><b>面壁智能</b></a> · Agent 算法实习生 · 2026.04 – 2026.09</td></tr>
   <tr><td></td></tr>
   <tr><td><a href="mailto:13165998033@163.com"><b>13165998033@163.com</b></a> — 无论什么事都可以联系我，随时欢迎来信 💌</td></tr>
 </table>
