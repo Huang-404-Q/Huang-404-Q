@@ -21,11 +21,11 @@
 ## 🎯 About Me
 
 <table>
-  <tr><td>&nbsp; <a href="https://www.hrbeu.edu.cn"><b>哈尔滨工程大学</b></a> · 硕士 · 2025 – 2028</td></tr>
-  <tr><td>&nbsp; <a href="https://www.njupt.edu.cn"><b>南京邮电大学</b></a> · 本科 · 2021 – 2025</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/hrbeu.png" height="20" alt="哈尔滨工程大学"/>&nbsp; <a href="https://www.hrbeu.edu.cn"><b>哈尔滨工程大学</b></a> · 硕士 · 2025 – 2028</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/njupt.png" height="20" alt="南京邮电大学"/>&nbsp; <a href="https://www.njupt.edu.cn"><b>南京邮电大学</b></a> · 本科 · 2021 – 2025</td></tr>
   <tr><td></td></tr>
-  <tr><td>&nbsp; <a href="https://www.10jqka.com.cn"><b>同花顺</b></a> · 大模型算法实习生 · 2026.09 – 至今</td></tr>
-  <tr><td>&nbsp; <a href="https://www.modelbest.cn"><b>面壁智能</b></a> · Agent 算法实习生 · 2026.04 – 2026.09</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/hithink.png" height="20" alt="同花顺"/>&nbsp; <a href="https://www.10jqka.com.cn"><b>同花顺</b></a> · 大模型算法实习生 · 2026.09 – 至今</td></tr>
+  <tr><td>&nbsp; <img src="assets/logos/modelbest.png" height="20" alt="面壁智能"/>&nbsp; <a href="https://www.modelbest.cn"><b>面壁智能</b></a> · Agent 算法实习生 · 2026.04 – 2026.09</td></tr>
   <tr><td></td></tr>
   <tr><td><a href="mailto:13165998033@163.com"><b>13165998033@163.com</b></a> — 无论什么事都可以联系我，随时欢迎来信 💌</td></tr>
 </table>
@@ -124,14 +124,25 @@ Android 原生执行型 Agent：本地记忆、受控的工具调用、自动化
 <p align="center">代码合并 <b>53</b> · 覆盖 <b>28</b> 个上游仓库</p>
 
 <details>
-<summary>📌 挑几个说说</summary>
+<summary>📌 挑几个说说（都是线上真会出事的那种）</summary>
 
-- **prometheus/prometheus**：[tsdb 截断后 head chunk 文件编号保持单调递增](https://github.com/prometheus/prometheus/pull/20149)
-- **nodejs/node**：[http2 在标记 session 销毁前先清掉超时](https://github.com/nodejs/node/pull/66886)
-- **microsoft/terminal**：[修复重复进入备用缓冲区时用了过期的主视口尺寸](https://github.com/microsoft/terminal/pull/20825)
-- **mozilla/pdf.js**：[读取 32 位函数采样时改用无符号移位](https://github.com/mozilla/pdf.js/pull/22380)
-- **jqlang/jq**：[修复 halt_error 给非字符串输出多加换行](https://github.com/jqlang/jq/pull/3694)
-- **sveltejs/svelte**：[解析带箭头函数类型的 snippet 类型参数](https://github.com/sveltejs/svelte/pull/19141)
+- **prometheus/prometheus** · [截断后 head chunk 文件编号保持单调递增](https://github.com/prometheus/prometheus/pull/20149)
+  重启后如果在还没写入新 chunk 的空窗期触发截断，序号会归零、下一个文件又从 `000001` 开始，新样本的引用低于 OOO 书签，查询路径直接忽略、GC 再清一遍——数据**静默丢失**。
+
+- **mozilla/pdf.js** · [读 32 位函数采样时改用无符号移位](https://github.com/mozilla/pdf.js/pull/22380)
+  32 位累加器用算术移位，最高位为 1 时整段采样读成负数再被钳到 0：`0x80000000` 本该是 0.5 却解码成 0，整条 PDF 函数曲线是错的。
+
+- **maximhq/bifrost** · [在故障转移边界清掉上游响应头](https://github.com/maximhq/bifrost/pull/7021)
+  LLM 网关回退到 B 却把 A 的 `Retry-After` 和限流头原样转发，客户端按一个**从没服务过它的 provider** 的限额去等待，而且从响应本身无法察觉。
+
+- **LearningCircuit/local-deep-research** · [删除报告时拒绝软链接和越界路径](https://github.com/LearningCircuit/local-deep-research/pull/6473)
+  旧实现先 resolve 再 unlink，根目录内一个指向外部的软链接会**删掉根外的文件**；改成按给定路径删除、用解析后的位置判断越界，并把检查和删除合成一步。
+
+- **nodejs/node** · [标记 session 销毁前先清掉超时](https://github.com/nodejs/node/pull/66886)
+  `setTimeout(0)` 在已销毁的 session 上提前返回，空闲定时器继续持有 session 到 30 秒超时才放——连接已关但资源不释放。
+
+- **google/adk-go** · [状态写库时不再吞掉 JSON 序列化错误](https://github.com/google/adk-go/pull/1551)
+  `GormValuer` 路径写的是 `data, _ := json.Marshal(...)`，`NaN` 这类值被序列化成空 payload **静默写进库**，错误通道形同虚设。
 
 </details>
 
